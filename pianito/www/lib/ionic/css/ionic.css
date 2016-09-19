@@ -8950,7 +8950,7 @@ button.button-block,
 button.button-full,
 .button-full > button.button,
 input.button.button-block {
-  width: 100%; }
+  width: 30%; }
 
 a.button {
   text-decoration: none; }

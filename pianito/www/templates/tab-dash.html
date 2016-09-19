@@ -1,7 +1,27 @@
 <ion-view view-title="Chats">
   <ion-content>
-    <ion-list>
-    <button class="button button-block button-assertive" ng-click="sonar('inmo')">Sonido</button>
-     </ion-list>
+     <table style="width: 80%; margin: auto;">
+        <tr>
+                <tr>
+                    <button ng-disabled="!grabar" class="button button-block button-assertive ion-record" ng-click="Grabar()"></button>
+                </tr>
+                <tr>
+                    <button ng-disabled="!parar" class="button button-block button-positive ion-stop" ng-click="Parar()"></button>
+                </tr>
+                <tr>
+                    <button ng-disabled="!reproducir" class="button button-block button-balanced ion-play" ng-click="Reproducir()"></button>
+                </tr>
+                <tr>
+                    <button ng-disabled="!borraryguardar" class="button button-block ion-trash-a" ng-click="Borrar()"></button>
+                </tr>
+            </tr>
+          <tr> 
+            <td ng-click="Tocar('la')"><img src="img/la.png" height="200" width="200" alt=""></td>
+            <td ng-click="Tocar('do')"><img src="img/do.png" height="200" width="200" alt=""></td>
+            <td ng-click="Tocar('re')"><img src="img/re.png" height="200" width="200" alt=""></td>
+            <td ng-click="Tocar('resus')"><img src="img/resus.png" height="200" width="200" alt=""></td>
+            </tr>
+              
+    </table>
   </ion-content>
 </ion-view>
