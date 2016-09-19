@@ -21,8 +21,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
     if (window.plugins && window.plugins.NativeAudio) {
-      window.plugins.NativeAudio.preloadSimple( 'inmo', 'audio/inmo.mp3', function(msg){
-
+      window.plugins.NativeAudio.preloadSimple( 'la', 'audio/la.m4a', function(msg){
+        alert ("Se precargó");
+    }, function(msg){
+        console.log( 'error: ' + msg );
+    });
+      window.plugins.NativeAudio.preloadSimple( 'do', 'audio/do.m4a', function(msg){
+        alert ("Se precargó");
+    }, function(msg){
+        console.log( 'error: ' + msg );
+    });
+      window.plugins.NativeAudio.preloadSimple( 're', 'audio/re.m4a', function(msg){
+        alert ("Se precargó");
+    }, function(msg){
+        console.log( 'error: ' + msg );
+    });
+      window.plugins.NativeAudio.preloadSimple( 'resus', 'audio/resus.m4a', function(msg){
         alert ("Se precargó");
     }, function(msg){
         console.log( 'error: ' + msg );

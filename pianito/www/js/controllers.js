@@ -1,6 +1,16 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio) {
+$scope.sonar = function(sonido){
+    $cordovaNativeAudio.play(sonido);
+  };
+
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+
+})
 
 .controller('ChatsCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio) {
   // With the new view caching in Ionic, Controllers are only called
