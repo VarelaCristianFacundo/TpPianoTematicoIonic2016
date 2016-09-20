@@ -3,19 +3,23 @@
     <ion-list>
     <table style="width: 80%; margin: auto;">
         <tr>
-            <td ng-click="sonar('la')"><img src="img/la.png" height="100" width="100" alt=""></td>
-            <td ng-click="sonar('do')"><img src="img/do.png" height="100" width="100" alt=""></td>
-            <td ng-click="sonar('re')"><img src="img/re.png" height="100" width="100" alt=""></td>
-            <td ng-click="sonar('resus')"><img src="img/resus.png" height="100" width="100" alt=""></td>
+          <h1>Piano</h1>
+            <td ng-click="sonar('la')"><img src="img/la.png" height="70" width="70" alt=""></td>
+            <td ng-click="sonar('do')"><img src="img/do.png" height="70" width="70" alt=""></td>
+            <td ng-click="sonar('re')"><img src="img/re.png" height="70" width="70" alt=""></td>
+            <td ng-click="sonar('resus')"><img src="img/resus.png" height="70" width="70" alt=""></td>
+        </tr>
+      </table>
+      <table style="width: 80%; margin: auto;">
             <tr>
-              <td><button class="button button-block button-assertive ion-record" ng-click="grabar()"></button></td>
-              <td><button class="button button-block button-balanced ion-play" ng-click="reproducir()"></button></td>
+              <td><button class="button button-block button-assertive ion-record" ng-click="grabar()"> Rec</button></td>
+              <td><button class="button button-block button-balanced ion-play" ng-click="reproducir()"> Play</button></td>
             </tr>
             <tr>
-              <td><button class="button button-block button-calm ion-stop" ng-click="parar()"></button></td>
+              <td><button class="button button-block button-calm ion-stop" ng-click="parar()"> Stop</button></td>
               <td><button class="button button-block button-energized ion-trash-a" ng-click="borrar()"></button></td>
             </tr>
-        </tr>
+        </table>
 
 
 

@@ -21,22 +21,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       StatusBar.styleDefault();
     }
     if (window.plugins && window.plugins.NativeAudio) {
-      window.plugins.NativeAudio.preloadSimple( 'la', 'audio/la.m4a', function(msg){
+      window.plugins.NativeAudio.preloadSimple( 'la', 'audio/la.mp3', function(msg){
         alert ("Se precargó");
     }, function(msg){
         console.log( 'error: ' + msg );
     });
-      window.plugins.NativeAudio.preloadSimple( 'do', 'audio/do.m4a', function(msg){
+      window.plugins.NativeAudio.preloadSimple( 'do', 'audio/do.mp3', function(msg){
         alert ("Se precargó");
     }, function(msg){
         console.log( 'error: ' + msg );
     });
-      window.plugins.NativeAudio.preloadSimple( 're', 'audio/re.m4a', function(msg){
+      window.plugins.NativeAudio.preloadSimple( 're', 'audio/re.mp3', function(msg){
         alert ("Se precargó");
     }, function(msg){
         console.log( 'error: ' + msg );
     });
-      window.plugins.NativeAudio.preloadSimple( 'resus', 'audio/resus.m4a', function(msg){
+      window.plugins.NativeAudio.preloadSimple( 'resus', 'audio/resus.mp3', function(msg){
         alert ("Se precargó");
     }, function(msg){
         console.log( 'error: ' + msg );
