@@ -1,8 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio) {
+.controller('DashCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio, $cordovaVibration, $cordovaFile) {
 $scope.sonar = function(sonido){
+
     $cordovaNativeAudio.play(sonido);
+    $cordovaVibration.vibrate(100);
   };
 
   $scope.chats = Chats.all();
