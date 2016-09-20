@@ -1,16 +1,82 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio, $cordovaVibration, $cordovaFile) {
+.controller('DashCtrl', function($scope, $timeout, $cordovaNativeAudio, $cordovaVibration, $cordovaFile) {
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+  $cordovaFile.writeFile(cordova.file.dataDirectory, "melodias.txt", '{autor:"Facu", nombre:"varela", melodia:[]', true)
+  .then(function (success) {
+            console.log(success);
+        }, function (error) {
+            console.log(error);
+            alert("Error: writeFile");
+        });
+  }
+
+var i;
+$scope.grabar = true;
+
 $scope.sonar = function(sonido){
+    try{
+      $cordovaNativeAudio.play(sonido);
+      $cordovaVibration.vibrate(100);
+    }
+    catch (err){
+      console.log("error");
+    }
+    if($scope.parar == true && $scope.grabar == false){
+       $scope.melodia[i] = sonido;
+       i++;
+    }
+  }
 
-    $cordovaNativeAudio.play(sonido);
-    $cordovaVibration.vibrate(100);
-  };
+  $scope.grabar = function(){
+    $scope.parar = true;
+    $scope.grabar = false;
+    $scope.melodia = [];
+    i=0;
+  }
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  $scope.parar = function(){
+    alert("llegue");
+    $scope.parar = false;
+    $scope.reproducir = true;
+    $scope.guardar = true;
+    }
+
+  $scope.reproducir = function(){
+    $scope.reproducir = false;
+        angular.forEach($scope.melodia, function(value, key) 
+        {
+            $cordovaNativeAudio.play(value);
+            for (var i = 0; i <= 100000000; i++) {
+            };              
+        });  
+    }
+
+    $scope.borrar = function(){
+        $scope.melodia = [];
+        i=0;
+        $scope.grabar = true;
+        $scope.parar = false;
+        $scope.reproducir = false;
+        $scope.guardar = false;
+    }
+
+    $scope.guardar = function(){
+      var nombre = prompt("Ingrese el titulo de la cancion");
+      var melodiastring = '"' + $scope.melodia.join('","') + '"';
+        var melodiaAGuardar = ',{autor:"'+nombre+'", nombre:"'+nombre+'", melodia:['+melodiastring+']}';
+        $cordovaFile.writeExistingFile(cordova.file.dataDirectory, "melodias.txt", melodiaAGuardar)
+          .then(function (success) {
+            }, function (error) {
+              alert(error);
+            alert("WriteFileEx Mal");
+        });
+          $scope.grabar = true;
+    };
+
 
 })
 
