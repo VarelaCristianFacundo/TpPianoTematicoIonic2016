@@ -17,7 +17,8 @@ function onDeviceReady() {
 var i;
 $scope.grabar = true;
 
-$scope.sonar = function(sonido){
+
+$scope.Sonar = function(sonido){
     try{
       $cordovaNativeAudio.play(sonido);
       $cordovaVibration.vibrate(100);
@@ -31,21 +32,23 @@ $scope.sonar = function(sonido){
     }
   }
 
-  $scope.grabar = function(){
+  $scope.Grabar = function(){
     $scope.parar = true;
     $scope.grabar = false;
     $scope.melodia = [];
     i=0;
+    console.log ($scope.parar);
+    console.log ($scope.grabar);
   }
 
-  $scope.parar = function(){
-    alert("llegue");
+  $scope.Parar = function(){
+    alert ("llegue");
     $scope.parar = false;
     $scope.reproducir = true;
     $scope.guardar = true;
     }
 
-  $scope.reproducir = function(){
+  $scope.Reproducir = function(){
     $scope.reproducir = false;
         angular.forEach($scope.melodia, function(value, key) 
         {
@@ -55,7 +58,7 @@ $scope.sonar = function(sonido){
         });  
     }
 
-    $scope.borrar = function(){
+    $scope.Borrar = function(){
         $scope.melodia = [];
         i=0;
         $scope.grabar = true;
@@ -64,7 +67,7 @@ $scope.sonar = function(sonido){
         $scope.guardar = false;
     }
 
-    $scope.guardar = function(){
+    $scope.Guardar = function(){
       var nombre = prompt("Ingrese el titulo de la cancion");
       var melodiastring = '"' + $scope.melodia.join('","') + '"';
         var melodiaAGuardar = ',{autor:"'+nombre+'", nombre:"'+nombre+'", melodia:['+melodiastring+']}';

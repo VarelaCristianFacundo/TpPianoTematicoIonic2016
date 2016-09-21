@@ -4,25 +4,27 @@
     <table style="width: 80%; margin: auto;">
         <tr>
           <h1>Piano</h1>
-            <td ng-click="sonar('la')"><img src="img/la.png" height="70" width="70" alt=""></td>
-            <td ng-click="sonar('do')"><img src="img/do.png" height="70" width="70" alt=""></td>
-            <td ng-click="sonar('re')"><img src="img/re.png" height="70" width="70" alt=""></td>
-            <td ng-click="sonar('resus')"><img src="img/resus.png" height="70" width="70" alt=""></td>
+            <td ng-click="Sonar('la')"><img src="img/la.png" height="70" width="70" alt=""></td>
+            <td ng-click="Sonar('do')"><img src="img/do.png" height="70" width="70" alt=""></td>
+            <td ng-click="Sonar('re')"><img src="img/re.png" height="70" width="70" alt=""></td>
+            <td ng-click="Sonar('resus')"><img src="img/resus.png" height="70" width="70" alt=""></td>
         </tr>
       </table>
+      <div>
       <table style="width: 80%; margin: auto;">
             <tr>
-              <td><button ng-disabled="!grabar" class="button button-block button-assertive ion-record" ng-click="grabar()"> Rec</button></td>
-              <td><button ng-disabled="!reproducir"class="button button-block button-balanced ion-play" ng-click="reproducir()"> Play</button></td>
+              <td><button ng-disabled="!grabar" class="button button-block button-assertive ion-record" ng-click="Grabar()"> Rec</button></td>
+              <td><button ng-disabled="!reproducir"class="button button-block button-balanced ion-play" ng-click="Reproducir()"> Play</button></td>
             </tr>
             <tr>
-              <td><button ng-disabled="!parar" class="button button-block button-calm ion-stop" ng-click="parar()"> Stop</button></td>
-              <td><button ng-disabled="!borrar" class="button button-block button-energized ion-trash-a" ng-click="borrar()"></button></td>              
+              <td><button ng-disabled="!parar" class="button button-block button-calm ion-stop" ng-click="Parar()"> Stop</button></td>
+              <td><button ng-disabled="!borrar" class="button button-block button-energized ion-trash-a" ng-click="Borrar()"></button></td>              
             </tr>
             <td>
-              <button ng-disabled="!guardar" class="button button-block button-royal ion-archive" ng-click="guardar()"></button>
+              <button ng-disabled="!guardar" class="button button-block button-royal ion-archive" ng-click="Guardar()"></button>
                 </td>
         </table>
+        </div>
         <div>{{melodia}}</div>
 
 
