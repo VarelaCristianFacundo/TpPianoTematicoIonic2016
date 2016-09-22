@@ -1,8 +1,41 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $timeout, $cordovaNativeAudio, $cordovaVibration, $cordovaFile) {
+.controller('login', function($scope, $state) {
+
+  $('#login').on('click', function(){
+    var username = "";
+    username = $("#nombre").val();
+    var flag = 0;
+  //alert ("Bienvenido "+username);
+       
+        if (username == "Cristian")
+        {
+            alert ("Bienvenido " + username);
+            $state.go('tab.dash');
+        }
+        else
+        {
+            alert ("Usted no es usuario");
+        }
+
+  })
+})
+
+.controller('DashCtrl', function($scope, $timeout, $state,$cordovaNativeAudio, $cordovaVibration, $cordovaFile) {
 
 document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+  $cordovaFile.writeFile(cordova.file.dataDirectory, "melodias.txt", '{autor:"Facu", nombre:"varela", melodia:[]', true)
+  .then(function (success) {
+            console.log(success);
+        }, function (error) {
+            console.log(error);
+            alert("Error: writeFile");
+        });
+  }
+
+  
 
 $scope.Sonar = function(sonido){
     try{
@@ -73,23 +106,24 @@ $scope.Sonar = function(sonido){
 
     };
 
-    function onDeviceReady() {
-  $cordovaFile.writeFile(cordova.file.dataDirectory, "melodias.txt", '{autor:"Facu", nombre:"varela", melodia:[]', true)
-  .then(function (success) {
-            console.log(success);
-        }, function (error) {
-            console.log(error);
-            alert("Error: writeFile");
-        });
-  }
+    
 
 var i;
 $scope.grabar = true;
-
+$scope.LeerTxt = function(){
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            // success
+             alert(success);
+        }, function (error) {
+            // error
+            alert(error);
+            alert("Read Mal");
+        });
+    };
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio) {
+.controller('ChatsCtrl', function($scope, Chats, $timeout, $cordovaNativeAudio, $cordovaFile) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -97,18 +131,26 @@ $scope.grabar = true;
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  $scope.sonar = function(sonido){
-    $cordovaNativeAudio.play(sonido);
-  };
+  document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            $scope.melodias = (new Function("return [" + success+ "];")());
+        }, function (error) {
+            alert("Error: "+error);
+            alert("Read Mal");
+        });
+    }
 
-  $scope.Ver = function(){
-    alert($scope.melodia);
-  };
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+    //CREO, que acá leo el .txt cada vez que vuelvo a entrar.
+    $scope.$on('$ionicView.enter', function(e) {
+        console.log(e); //Qué contendrá "e"?
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            $scope.melodias = (new Function("return [" + success+ "];")());
+        }, function (error) {
+            alert("Error: "+error);
+            alert("Read Mal");
+        });
+    });
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
