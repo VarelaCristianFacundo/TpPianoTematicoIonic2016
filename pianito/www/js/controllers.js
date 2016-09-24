@@ -140,10 +140,20 @@ $scope.LeerTxt = function(){
             alert("Read Mal");
         });
     }
+    $scope.LeerTxt = function(){
+        $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
+            // success
+             alert(success);
+        }, function (error) {
+            // error
+            alert(error);
+            alert("Read Mal");
+        });
+    };
 
-    //CREO, que acá leo el .txt cada vez que vuelvo a entrar.
+
     $scope.$on('$ionicView.enter', function(e) {
-        console.log(e); //Qué contendrá "e"?
+        console.log(e); 
         $cordovaFile.readAsText(cordova.file.dataDirectory, "melodias.txt").then(function (success) {
             $scope.melodias = (new Function("return [" + success+ "];")());
         }, function (error) {
